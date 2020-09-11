@@ -25,7 +25,7 @@ class GridItem extends StatelessWidget {
             icon,
             Text(
               this.itemName,
-              style: TextStyle(color: Colors.white, fontSize: 16.0),
+              style: TextStyle(color: Colors.white, fontSize: 24.0),
             )
           ],
         ),

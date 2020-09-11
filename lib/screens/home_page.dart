@@ -48,19 +48,46 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Agile Tasks App'),
+      appBar: AppBar(
+        title: Text('Agile Tasks App'),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            SizedBox(
+              width: double.infinity,
+              child: Card(
+                margin: EdgeInsets.fromLTRB(0, 7.0, 0, 7.0),
+                color: Theme.of(context).accentColor,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Ready for the day?",
+                        style: TextStyle(fontSize: 32.0, color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 2,
+                children: _featuresItems
+                    .map((it) => GridItem(
+                        itemName: it.name,
+                        icon: it.icon,
+                        onPressed: _handleFeaturePressed))
+                    .toList(),
+              ),
+            ),
+          ],
         ),
-        body: Center(
-          child: GridView.count(
-            crossAxisCount: 2,
-            children: _featuresItems
-                .map((it) => GridItem(
-                    itemName: it.name,
-                    icon: it.icon,
-                    onPressed: _handleFeaturePressed))
-                .toList(),
-          ),
-        ));
+      ),
+    );
   }
 }
