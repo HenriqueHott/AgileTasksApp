@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 typedef void TitlePressedCallback();
 
 class GridItem extends StatelessWidget {
-  GridItem({@required this.itemName, @required this.onPressed}) : super();
+  GridItem(
+      {@required this.itemName, @required this.icon, @required this.onPressed})
+      : super();
 
   final String itemName;
   final TitlePressedCallback onPressed;
+  final Icon icon;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +22,7 @@ class GridItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            icon,
             Text(
               this.itemName,
               style: TextStyle(color: Colors.white, fontSize: 16.0),
