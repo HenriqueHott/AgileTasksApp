@@ -1,8 +1,7 @@
-import 'package:Agile_Tasks_App/components/custom_tile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-typedef void TitlePressedCallback();
+import '../types.dart';
 
 class GridItem extends StatelessWidget {
   GridItem(
@@ -15,14 +14,22 @@ class GridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomTile(
-      onPressed: this.onPressed,
-      children: [
-        this.icon,
-        Text(
-          this.itemName,
-          style: TextStyle(color: Colors.white, fontSize: 24.0),
-        )
-      ],);
+    return Card(
+      color: Theme.of(context).accentColor,
+      child: InkWell(
+        onTap: onPressed,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            icon,
+            Text(
+              this.itemName,
+              style: TextStyle(color: Colors.white, fontSize: 24.0),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
