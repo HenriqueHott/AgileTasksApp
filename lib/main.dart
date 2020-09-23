@@ -1,3 +1,4 @@
+import 'package:Agile_Tasks_App/screens/goals_list.dart';
 import 'package:Agile_Tasks_App/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: GoalsList(),
     );
   }
 }
