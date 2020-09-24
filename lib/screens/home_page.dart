@@ -13,13 +13,12 @@ class _FeatureItem {
 class HomePage extends StatelessWidget {
   final List<_FeatureItem> _featuresItems = [
     _FeatureItem(
-      name: "Daily Tasks",
-      icon: Icon(
-        Icons.schedule,
-        size: 75.0,
-        color: Colors.white,
-      )
-    ),
+        name: "Daily Tasks",
+        icon: Icon(
+          Icons.schedule,
+          size: 75.0,
+          color: Colors.white,
+        )),
     _FeatureItem(
         name: "Goals",
         featurePage: GoalsList(),
@@ -44,12 +43,12 @@ class HomePage extends StatelessWidget {
         )),
   ];
 
-
-  final Function handlePageChange = (BuildContext context, Widget widget) {
-    if(widget != null) {
-       Navigator.of(context).push(MaterialPageRoute(builder: (context) => widget ));
+  void handlePageChange(BuildContext context, Widget widget) {
+    if (widget != null) {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => widget));
     }
-  };
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,21 +61,21 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             Card(
-                margin: EdgeInsets.fromLTRB(0, 7.0, 0, 7.0),
-                color: Theme.of(context).accentColor,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Ready for the day?",
-                        style: TextStyle(fontSize: 32.0, color: Colors.white),
-                      ),
+              margin: EdgeInsets.fromLTRB(0, 7.0, 0, 7.0),
+              color: Theme.of(context).accentColor,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Ready for the day?",
+                      style: TextStyle(fontSize: 32.0, color: Colors.white),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
+            ),
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,
@@ -84,8 +83,8 @@ class HomePage extends StatelessWidget {
                     .map((it) => GridItem(
                         itemName: it.name,
                         icon: it.icon,
-                        onPressed: () => handlePageChange(context, it.featurePage) 
-                      ))
+                        onPressed: () =>
+                            handlePageChange(context, it.featurePage)))
                     .toList(),
               ),
             ),
