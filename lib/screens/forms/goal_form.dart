@@ -1,7 +1,26 @@
+import 'package:Agile_Tasks_App/models/goal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class GoalForm extends StatelessWidget {
+class GoalForm extends StatefulWidget {
+  @override
+  _GoalFormState createState() => _GoalFormState();
+}
+
+class _GoalFormState extends State<GoalForm> {
+  TextEditingController titleController = new TextEditingController();
+  TextEditingController numTasksController = new TextEditingController();
+  TextEditingController descriptionController = new TextEditingController();
+
+  void handleSubmit() {
+    final Goal newGoal = Goal(
+        title: titleController.text,
+        tasks: int.parse(numTasksController.text),
+        description: descriptionController.text);
+        
+    Navigator.of(context).pop(newGoal);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,6 +35,7 @@ class GoalForm extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 12.0),
                   child: TextField(
+                    controller: titleController,
                     maxLength: 20,
                     decoration: InputDecoration(
                         labelText: 'Title',
@@ -28,6 +48,7 @@ class GoalForm extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 12.0),
                   child: TextField(
+                    controller: numTasksController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                         labelText: 'Number of tasks',
@@ -40,6 +61,7 @@ class GoalForm extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 12.0),
                   child: TextField(
+                    controller: descriptionController,
                     maxLines: 5,
                     maxLength: 150,
                     textAlign: TextAlign.justify,
@@ -53,14 +75,16 @@ class GoalForm extends StatelessWidget {
                   ),
                 ),
                 ButtonTheme(
-                  minWidth: 150,
-                  padding: EdgeInsets.all(8.0),
+                    minWidth: 150,
+                    padding: EdgeInsets.all(8.0),
                     child: RaisedButton(
-                    color: Theme.of(context).accentColor,
-                    child: Text('Submit', style: TextStyle(
-                    color: Colors.white
-                  ),), onPressed: () {}),
-                )
+                      color: Theme.of(context).accentColor,
+                      child: Text(
+                        'Submit',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: handleSubmit,
+                    ))
               ],
             ),
           ),
