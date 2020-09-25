@@ -13,7 +13,7 @@ void main() {
     // find home page
     await tester.pumpWidget(MaterialApp(home: GoalsList(),));
         final homePage = find.byType(GoalsList);
-        expect(homePage, findsOneWidget);
+        expect(homePage, findsOneWidget);;
 
 
       });
