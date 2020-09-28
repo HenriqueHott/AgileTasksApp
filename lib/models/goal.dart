@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class Goal {
-  Goal({@required this.title, @required this.description, @required this.tasks });
+  Goal({@required this.title, @required this.description, @required this.tasks }) : assert(tasks <= 9);
   
   final String title;
   final String description;

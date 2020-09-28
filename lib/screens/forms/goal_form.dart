@@ -75,15 +75,16 @@ class _GoalFormState extends State<GoalForm> {
                   ),
                 ),
                 ButtonTheme(
+                  
                     minWidth: 150,
                     padding: EdgeInsets.all(8.0),
                     child: RaisedButton(
+                      onPressed: handleSubmit,
                       color: Theme.of(context).accentColor,
                       child: Text(
                         'Submit',
                         style: TextStyle(color: Colors.white),
                       ),
-                      onPressed: handleSubmit,
                     ))
               ],
             ),
